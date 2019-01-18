@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-// import router from './router'
+import VeeValidate from 'vee-validate'
 
+// import router from './router'
 // import template from './template.html'
 
+Vue.use(VeeValidate);
 Vue.config.productionTip = false
 
 new Vue({
