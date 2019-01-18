@@ -33,6 +33,7 @@
                   <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
                       <!--using :key'index' will not work-->
                       <li v-for="(data, index) in skills" :key='data'>{{data.skill}}</li>
+                      <i class="fa fa-minus-circle float-right" @click="remove(index)"></i>
                   </transition-group>
               </ul>
           </form>
@@ -121,6 +122,9 @@ export default {
                 }
             })
 
+        },
+        remove(id){
+            this.skills.splice(id,1);
         }
     }
 }
@@ -128,6 +132,7 @@ export default {
 </script>
 <style>
     @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+    @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 
     .w-130{
     width: 130px;
