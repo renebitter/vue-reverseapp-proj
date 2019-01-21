@@ -21,19 +21,21 @@
 
       <div class="input-list">
           <form @submit.prevent="addSkill">
-              <input type="text" placeholder="Enter Your Skill..." v-model="skill" v-validate="'min:5'" name="skill">
+              <input class="mb-3" type="text" placeholder="Enter Your Skill..." v-model="skill" v-validate="'min:5'" name="skill">
 
-                  <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
-                      <p class="alert" v-if="errors.has('skill')">{{errors.first('skill')}}</p>
-                  </transition>
+              <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
+                  <p class="alert" v-if="errors.has('skill')">{{errors.first('skill')}}</p>
+              </transition>
 
 
               <!--<input type="checkbox" id="checkbox" v-model="checked">-->
               <ul>
-                  <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
+                  <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown" key="i">
                       <!--using :key'index' will not work-->
-                      <li v-for="(data, index) in skills" :key='data'>{{data.skill}}</li>
-                      <i class="fa fa-minus-circle float-right" @click="remove(index)"></i>
+                      <li v-for="(data, index) in skills" :key='index + 1'>
+                          {{data.skill}}
+                          <i class="fa fa-minus-circle float-right" @click="remove(index)"></i>
+                      </li>
                   </transition-group>
               </ul>
           </form>
@@ -97,10 +99,10 @@ export default {
     methods: {
         reverseMessage: function (array, index) {
             array[index].message = array[index].message.split('').reverse().join('');
-            console.log(array[index].message)
+            // console.log(array[index].message)
         },
         changeName: function () {
-          console.log("Change Name")
+          // console.log("Change Name")
         },
         enableButton: function () {
             //
@@ -109,16 +111,16 @@ export default {
             // } else {
             //     return btnState = true;
             // }
-            console.log("Checkbox")
+            // console.log("Checkbox")
         },
         addSkill(){
             this.$validator.validateAll().then((result) => {
                 if (result){
                     this.skills.push({skill: this.skill})
                     this.skill = '';
-                    console.log("addSkill: " + this.checked)
+                    // console.log("addSkill: " + this.checked)
                 }else{
-                    console.log("not valid")
+                    // console.log("not valid")
                 }
             })
 
@@ -147,17 +149,19 @@ export default {
     .input-list ul li {
       padding: 20px;
       font-size: 1.3em;
-      background-color: #E0EDF4;
+      background-color: #f8f8f8;
       border-left: 5px solid #3EB3F6;
       margin-bottom: 2px;
       color: #3E5252;
+        text-align:left;
+
     }
 
-    .input-list p {
-      text-align:center;
-      padding: 30px 0;
-      color: gray;
-    }
+    /*.input-list p {*/
+      /*text-align:center;*/
+      /*padding: 30px 0;*/
+      /*color: gray;*/
+    /*}*/
 
     .card {
       box-shadow: 0px 0px 40px lightgray;
