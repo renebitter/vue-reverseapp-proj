@@ -27,7 +27,7 @@
       <div class="input-list">
           <h3 class="text-left small">VeeValidate Plugin</h3>
           <form @submit.prevent="addSkill">
-              <input class="mb-3" type="text" placeholder="Enter Your Skill..." v-model="skill" v-validate="'min:3|max:6'" name="skill">
+              <input class="mb-3" type="text" placeholder="Enter Your Skill..." autocomplete="off" v-model="skill" v-validate="'min:3|max:7'" name="skill">
               <h4 class="text-left small">Transition Animation</h4>
               <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
                   <p class="alert" v-if="errors.has('skill')">{{errors.first('skill')}}</p>
