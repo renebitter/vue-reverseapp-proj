@@ -1,28 +1,34 @@
 <template>
   <div class="card-body">
-    <!--<h2>{{ msg }}</h2>-->
-      <div class="text-left">
-          <ul>
-              <li v-for="(data, index) in items" :key='index'>
-                  <button class="btn btn-outline-dark mr-1 mb-1" @click="reverseMessage(items, index)">{{ data.message }}</button>
-                  <input class="w-130 float-right" v-model="data.message">
-              </li>
-          </ul>
-      </div>
+    <h2>{{ msg }}</h2>
+      <div>
+          <h3 class="mb-3 text-left small">2 Objects 1 Function (click to reverse)</h3>
+          <div class="text-left">
+              <h4 class="mb-3 small">Object 1</h4>
+              <ul>
+                  <li v-for="(data, index) in items" :key='index'>
+                      <button class="btn btn-outline-dark mr-1 mb-1" @click="reverseMessage(items, index)">{{ data.message }}</button>
+                      <input class="w-130 float-right" v-model="data.message">
+                  </li>
+              </ul>
+          </div>
 
-      <div class="text-left">
-          <ul>
-              <li v-for="(data, index) in array2" :key='index'>
-                  <button class="btn btn-outline-dark mr-1 mb-1" @click="reverseMessage(array2, index)">{{ data.message }}</button>
-                  <input class="w-130 float-right" v-model="data.message">
-              </li>
-          </ul>
+          <div class="text-left">
+              <h4 class="mb-3 small">Object 2</h4>
+              <ul>
+                  <li v-for="(data, index) in array2" :key='index'>
+                      <button class="btn btn-outline-dark mr-1 mb-1" @click="reverseMessage(array2, index)">{{ data.message }}</button>
+                      <input class="w-130 float-right" v-model="data.message">
+                  </li>
+              </ul>
+          </div>
       </div>
 
       <div class="input-list">
+          <h3 class="text-left small">VeeValidate Plugin</h3>
           <form @submit.prevent="addSkill">
               <input class="mb-3" type="text" placeholder="Enter Your Skill..." v-model="skill" v-validate="'min:3|max:6'" name="skill">
-
+              <h4 class="text-left small">Transition Animation</h4>
               <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
                   <p class="alert" v-if="errors.has('skill')">{{errors.first('skill')}}</p>
               </transition>
@@ -30,6 +36,7 @@
 
               <!--<input type="checkbox" id="checkbox" v-model="checked">-->
               <ul>
+                  <h4 class="text-left small">Transition-Group Animation</h4>
                   <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown" key="i">
                       <!--using :key'index' will not work-->
                       <li v-for="(data, index) in skills" :key='index + 1'>
@@ -42,11 +49,12 @@
       </div>
 
       <div>
+          <h3 class="text-left small">Variable</h3>
           {{name}}
       </div>
 
       <div>
-
+          <!--Button validation without VeeValidate Plugin-->
           <!--<div class="input-group mb-3">-->
               <!--<div class="input-group-append">-->
                   <!--<div class="input-group-text">-->
@@ -58,7 +66,6 @@
                   <!--</div>-->
               <!--</div>-->
           <!--</div>-->
-
       </div>
 
   </div>
@@ -68,9 +75,9 @@
 
 export default {
     name: 'Content',
-    // props: {
-    //   msg: String,
-    // },
+    props: {
+      msg: String,
+    },
     data() {
         return {
             skill: "",
@@ -140,40 +147,19 @@ export default {
     width: 130px;
     }
 
-    /*ul {*/
-      /*margin: 0;*/
-      /*padding: 0;*/
-      /*list-style-type: none;*/
-    /*}*/
-
     .input-list ul li {
       padding: 20px;
       font-size: 1.3em;
       background-color: #f8f8f8;
-      border-left: 5px solid #3EB3F6;
+      border-left: 5px solid #42b983;
       margin-bottom: 2px;
       color: #3E5252;
-        text-align:left;
-
+      text-align:left;
     }
-
-    /*.input-list p {*/
-      /*text-align:center;*/
-      /*padding: 30px 0;*/
-      /*color: gray;*/
-    /*}*/
 
     .card {
       box-shadow: 0px 0px 40px lightgray;
     }
-
-    /*.alert {*/
-      /*background: #fdf2ce;*/
-      /*font-weight: bold;*/
-      /*display: inline-block;*/
-      /*padding: 5px;*/
-      /*margin-top: -20px;*/
-    /*}*/
 
     .alert-in-enter-active {
       animation: bounce-in .5s;

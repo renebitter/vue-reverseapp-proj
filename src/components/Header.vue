@@ -1,6 +1,6 @@
 <template>
     <div class="card-header">
-        <h1 class="text-left">  {{ text }} </h1>
+        <h2 class="text-left small"> {{ text }} </h2>
     </div>
 </template>
 

@@ -1,33 +1,25 @@
 <template>
   <div id="app" class="container mb-5">
     <div class="card">
-      <!--<img alt="Vue logo" src="./assets/logo.png">-->
-        <nav>
+        <div>
+            <img alt="Vue logo" src="./assets/logo.png" class="w-25 py-3">
+        </div>
+
+        <nav class="pb-3">
+            <h1 class="text-center">Router Links</h1>
             <router-link to="/">Home</router-link>
             <router-link to="/about/Rene">About</router-link>
         </nav>
 
 
-        <Header text="Reverse App"/>
+        <Header text="Header Component"/>
         <router-view />
-        <!--<Content msg="Content"/>-->
-        <Footer text="Footer"/>
-
-
+        <!--<Content msg="Content Component"/>-->
+        <Footer text="Footer Component"/>
 
     </div>
   </div>
 </template>
-
-<!--<template>-->
-  <!--<div id="app">-->
-    <!--<nav>-->
-      <!--<router-link to="/">Home</router-link>-->
-      <!--<router-link to="/about">About</router-link>-->
-    <!--</nav>-->
-    <!--<router-view/>-->
-  <!--</div>-->
-<!--</template>-->
 
 <script>
 import Content from './components/Content.vue'
@@ -48,9 +40,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style>
-    h3 {
-        margin: 40px 0 0;
-    }
     ul {
         list-style-type: none;
         padding: 0;
@@ -75,13 +64,12 @@ export default {
         padding-top: 50px;
     }
 
-    nav {
-        padding: 20px 20px 20px 0;
-    }
+    /*nav {*/
+        /*padding: 20px 20px 20px 20px;*/
+    /*}*/
 
     nav a {
         padding: 10px;
         text-decoration: none;
-        margin-right: 15px;
     }
 </style>
