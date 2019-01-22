@@ -21,7 +21,7 @@
 
       <div class="input-list">
           <form @submit.prevent="addSkill">
-              <input class="mb-3" type="text" placeholder="Enter Your Skill..." v-model="skill" v-validate="'min:5'" name="skill">
+              <input class="mb-3" type="text" placeholder="Enter Your Skill..." v-model="skill" v-validate="'min:3|max:6'" name="skill">
 
               <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
                   <p class="alert" v-if="errors.has('skill')">{{errors.first('skill')}}</p>
@@ -75,8 +75,8 @@ export default {
         return {
             skill: "",
             skills: [
-                {"skill": "Vue.js"},
-                {"skill": "Frontend Developer"}
+                {"skill": "Skill 1"},
+                {"skill": "Skill 2"}
             ],
             name: 'Rene',
             checked: false,

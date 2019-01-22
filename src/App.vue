@@ -4,12 +4,13 @@
       <!--<img alt="Vue logo" src="./assets/logo.png">-->
         <nav>
             <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
+            <router-link to="/about/Rene">About</router-link>
         </nav>
 
-        <router-view />
+
         <Header text="Reverse App"/>
-        <Content msg="Content"/>
+        <router-view />
+        <!--<Content msg="Content"/>-->
         <Footer text="Footer"/>
 
 
@@ -65,26 +66,22 @@ export default {
      width: 340px;
     }
 
-    /*body {*/
-        /*background-color: #EEEEEE;*/
-        /*font-family: 'Montserrat', sans-serif;*/
-        /*display: grid;*/
-        /*grid-template-rows: auto;*/
-        /*justify-items: center;*/
-        /*padding-top: 50px;*/
-    /*}*/
+    body {
+        background-color: #EEEEEE;
+        font-family: 'Montserrat', sans-serif;
+        display: grid;
+        grid-template-rows: auto;
+        justify-items: center;
+        padding-top: 50px;
+    }
 
-    /*nav {*/
-        /*padding: 20px 20px 20px 0;*/
-    /*}*/
+    nav {
+        padding: 20px 20px 20px 0;
+    }
 
-    /*nav a {*/
-        /*padding: 10px;*/
-        /*text-decoration: none;*/
-        /*background: #fff;*/
-        /*border-radius: 3px;*/
-        /*color: rgb(0, 110, 255);*/
-        /*font-weight: bold;*/
-        /*margin-right: 15px;*/
-    /*}*/
+    nav a {
+        padding: 10px;
+        text-decoration: none;
+        margin-right: 15px;
+    }
 </style>
