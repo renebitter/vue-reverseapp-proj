@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="container mb-5">
+      <!--{{ info }}-->
     <div class="card">
         <div>
             <img alt="Vue logo" src="./assets/logo.png" class="w-25 py-3">
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-import Content from './components/Content.vue'
+// import Content from './components/Content.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import './assets/app.css';
@@ -30,7 +31,7 @@ import './assets/app.css';
 export default {
   name: 'app',
   components: {
-    Content,
+    // Content,
     Header,
     Footer
   }

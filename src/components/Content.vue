@@ -1,13 +1,40 @@
+<!--TODO: Add validation for button and checkbox & function to change the variable; Save data when changing routes; Add specific API infos; v-bind:key at API div-->
+
 <template>
   <div class="card-body">
-    <h2>{{ msg }}</h2>
+    <h1 class="mb-3 text-left small">Content Component {{ msg }}</h1>
       <div>
+          <div class="mb-3 text-left">
+              <h2 class="mb-3 text-left small">API Info</h2>
+              <!--<div v-for="currency in info" class="currency">-->
+                  <!--{{ currency.description }}:-->
+                  <!--<span class="lighten">-->
+                      <!--<span v-html="currency.symbol"></span>-->
+                      <!--{{ currency.rate_float | currencydecimal }}-->
+                  <!--</span>-->
+              <!--</div>-->
+
+              <section v-if="errored">
+                  <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+              </section>
+
+              <section v-else>
+                  <div v-if="loading">Loading...</div>
+                  <div v-else v-for="currency in info" class="currency">
+                      {{ currency.description }}:
+                      <span class="lighten">
+                        <span v-html="currency.symbol"></span>{{ currency.rate_float | currencydecimal }}
+                      </span>
+                  </div>
+              </section>
+
+          </div>
           <h3 class="mb-3 text-left small">2 Objects 1 Function (click to reverse)</h3>
           <div class="text-left">
               <h4 class="mb-3 small">Object 1</h4>
               <ul>
                   <li v-for="(data, index) in items" :key='index'>
-                      <button class="btn btn-outline-dark mr-1 mb-1" @click="reverseMessage(items, index)">{{ data.message }}</button>
+                      <button class="btn btn-outline-success mr-1 mb-1" @click="reverseMessage(items, index)">{{ data.message }}</button>
                       <input class="w-130 float-right" v-model="data.message">
                   </li>
               </ul>
@@ -17,7 +44,7 @@
               <h4 class="mb-3 small">Object 2</h4>
               <ul>
                   <li v-for="(data, index) in array2" :key='index'>
-                      <button class="btn btn-outline-dark mr-1 mb-1" @click="reverseMessage(array2, index)">{{ data.message }}</button>
+                      <button class="btn btn-outline-success mr-1 mb-1" @click="reverseMessage(array2, index)">{{ data.message }}</button>
                       <input class="w-130 float-right" v-model="data.message">
                   </li>
               </ul>
@@ -72,71 +99,90 @@
 </template>
 
 <script>
+    import axios from 'axios';
 
-export default {
-    name: 'Content',
-    props: {
-      msg: String,
-    },
-    data() {
-        return {
-            skill: "",
-            skills: [
-                {"skill": "Skill 1"},
-                {"skill": "Skill 2"}
-            ],
-            name: 'Rene',
-            checked: false,
-            btnState: true,
-            items: [
-                { message: 'Foo' },
-                { message: 'Bar' },
-                { message: 'Ipsum' },
-                { message: 'Lorem' }
-            ],
-            array2: [
-                { message: '12' },
-                { message: '21' },
-                { message: '32' },
-                { message: '42' }
-            ]
-        }
-
-    },
-    methods: {
-        reverseMessage: function (array, index) {
-            array[index].message = array[index].message.split('').reverse().join('');
-            // console.log(array[index].message)
+    export default {
+        name: 'Content',
+        props: {
+          msg: String,
         },
-        changeName: function () {
-          // console.log("Change Name")
-        },
-        enableButton: function () {
-            //
-            // if(#checkbox2 = checked){
-            //     return btnState = false;
-            // } else {
-            //     return btnState = true;
-            // }
-            // console.log("Checkbox")
-        },
-        addSkill(){
-            this.$validator.validateAll().then((result) => {
-                if (result){
-                    this.skills.push({skill: this.skill})
-                    this.skill = '';
-                    // console.log("addSkill: " + this.checked)
-                }else{
-                    // console.log("not valid")
-                }
-            })
+        data() {
+            return {
+                skill: "",
+                skills: [
+                    {"skill": "Skill 1"},
+                    {"skill": "Skill 2"}
+                ],
+                name: 'Rene',
+                checked: false,
+                btnState: true,
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' },
+                    { message: 'Ipsum' },
+                    { message: 'Lorem' }
+                ],
+                array2: [
+                    { message: '12' },
+                    { message: '21' },
+                    { message: '32' },
+                    { message: '42' }
+                ],
+                info: null,
+                loading: true,
+                errored: false
+            }
 
         },
-        remove(id){
-            this.skills.splice(id,1);
-        }
+        mounted () {
+            axios
+                .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                .then(response => (this.info = response.data.bpi))
+                .catch(error => {
+                    console.log(error)
+                    this.errored = true
+                })
+                .finally(() => this.loading = false)
+        },
+        methods: {
+            reverseMessage: function (array, index) {
+                array[index].message = array[index].message.split('').reverse().join('');
+                // console.log(array[index].message)
+            },
+            changeName: function () {
+              // console.log("Change Name")
+            },
+            enableButton: function () {
+                //
+                // if(#checkbox2 = checked){
+                //     return btnState = false;
+                // } else {
+                //     return btnState = true;
+                // }
+                // console.log("Checkbox")
+            },
+            addSkill(){
+                this.$validator.validateAll().then((result) => {
+                    if (result){
+                        this.skills.push({skill: this.skill})
+                        this.skill = '';
+                        // console.log("addSkill: " + this.checked)
+                    }else{
+                        // console.log("not valid")
+                    }
+                })
+
+            },
+            remove(id){
+                this.skills.splice(id,1);
+            }
+        },
+        filters: {
+            currencydecimal (value) {
+                return value.toFixed(2)
+            }
+        },
     }
-}
 
 </script>
 <style>
