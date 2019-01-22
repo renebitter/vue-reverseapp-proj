@@ -1,4 +1,8 @@
-<!--TODO: Add validation for button and checkbox & function to change the variable; Save data when changing routes; Add specific API infos; v-bind:key at API div-->
+<!--TODO: Add validation for button and checkbox & function to change the variable-->
+<!--TODO: Add validation for input to only add skills that are not already present-->
+<!--TODO: Save data when changing routes-->
+<!--TODO: Add specific API infos-->
+<!--TODO: Fix v-bind:key at API div-->
 
 <template>
   <div class="card-body">

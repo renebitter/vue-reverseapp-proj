@@ -1,19 +1,22 @@
+<!--TODO: Make nav into Header-->
+
 <template>
   <div id="app" class="container mb-5">
       <!--{{ info }}-->
     <div class="card">
-        <div>
-            <img alt="Vue logo" src="./assets/logo.png" class="w-25 py-3">
-        </div>
 
-        <nav class="pb-3">
-            <h1 class="text-center">Router Links</h1>
+        <nav class="card-header pb-3">
+            <div>
+                <img alt="Vue logo" src="./assets/logo.png" class="w-25 float-left">
+            </div>
+            <h1 class="small">Router Links</h1>
             <router-link to="/">Home</router-link>
+            <router-link to="/api">API</router-link>
             <router-link to="/about/Rene">About</router-link>
         </nav>
 
 
-        <Header text="Header Component"/>
+        <!--<Header text="Header Component"/>-->
         <router-view />
         <!--<Content msg="Content Component"/>-->
         <Footer text="Footer Component"/>
