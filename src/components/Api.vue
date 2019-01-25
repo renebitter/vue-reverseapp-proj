@@ -12,13 +12,35 @@
 
             <section v-else>
                 <div v-if="loading">Loading...</div>
-                <div v-else v-for="currency in info" class="currency">
-                    {{ currency.description }}:
-                    <span class="lighten">
-                    <span v-html="currency.symbol"></span>{{ currency.rate_float | currencydecimal }}
-                  </span>
-                </div>
+                <!--<ul>-->
+                    <div v-else v-for="(value, key) in info1">
+                        <strong>
+                            {{ key }}:
+                        </strong>
+                        <span class="small">
+                            ${{ value | currencydecimal }}
+                            <!--if > 4000 color red-->
+                        </span>
+                    </div>
+                <!--</ul>-->
+
             </section>
+
+            <!--<section v-else>-->
+                <!--<div v-if="loading">Loading...</div>-->
+                <!--<div v-else v-for="update in info" class="currency">-->
+                    <!--{{ update.updated }}:-->
+                    <!--<span class="lighten">-->
+                    <!--<span v-html="update.updated"></span>{{ update.updatedISO }}-->
+                  <!--</span>-->
+                <!--</div>-->
+            <!--</section>-->
+
+            <!--<div>{{ info2.updated }}</div>-->
+            <!--<div>{{ info2.updatedISO }}</div>-->
+            <!--<div>{{ info2.updateduk }}</div>-->
+
+
 
         </div>
     </div>
@@ -28,6 +50,7 @@
 <script>
 
     import axios from 'axios';
+    // import api from '../js/api';
 
     export default {
         name: 'Api',
@@ -36,20 +59,40 @@
         },
         data() {
             return {
-                info: null,
+                info1: null,
+                info2: null,
                 loading: true,
                 errored: false
             }
         },
         mounted () {
             axios
-                .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-                .then(response => (this.info = response.data.bpi))
+                // .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                // .then(response => (this.info1 = response.data.bpi))
+                // // .then(response => (this.info2 = response.data.time))
+                // .catch(error => {
+                //     console.log(error)
+                //     this.errored = true
+                // })
+                // .finally(() => this.loading = false)
+
+                // .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                // .then(response => (this.info2 = response.data.time))
+                // .catch(error => {
+                //     // console.log(error)
+                //     this.errored = true
+                // })
+                // .finally(() => this.loading = false)
+
+                .get('https://api.coindesk.com/v1/bpi/historical/close.json')
+                .then(response => (this.info1 = response.data.bpi))
                 .catch(error => {
-                    console.log(error)
+                    // console.log(error)
                     this.errored = true
                 })
                 .finally(() => this.loading = false)
+
+
         },
         filters: {
             currencydecimal (value) {

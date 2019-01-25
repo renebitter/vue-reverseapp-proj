@@ -197,6 +197,10 @@
     width: 130px;
     }
 
+    .fa-minus-circle{
+        cursor: pointer;
+    }
+
     .input-list ul li {
       padding: 20px;
       font-size: 1.3em;
