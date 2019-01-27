@@ -1,5 +1,9 @@
 # vue-reverseapp-proj
 
+My first Vue project.
+Used: Components, Routes, Reusable functions, API
+
+
 ## Project setup
 ```
 npm install
