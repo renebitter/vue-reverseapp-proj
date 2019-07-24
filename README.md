@@ -1,27 +1,7 @@
 # vue-reverseapp-proj
-```
+
 My first Vue project.
-```
-### What I learned: 
-```
-Installation:
-```
-* Vue CLI
-* Plugins via NPM
-```
-Concepts:
-```
-* Components
-* Templating
-* Class and Style Binding
-* Forms / Validation (VeeValidate Plugin)
-* Animation / Transition animations
-* Routing
-* Axios (API)
-```
-Used:
-```
-* Reusable function (reverses a string from 2 different objects)
+Used: Components, Routes, Reusable functions, API
 
 
 ## Project setup
