@@ -1,7 +1,7 @@
 <template>
 
     <div class="card-body">
-        <h1 class="mb-3 text-left small">Content Component {{ msg }}</h1>
+        <h1 class="mb-3 text-left small">API Component {{ msg }}</h1>
 
         <div class="mb-3 text-left">
             <h2 class="mb-3 text-left small">API Info</h2>
