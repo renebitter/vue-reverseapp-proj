@@ -9,7 +9,7 @@
             <div>
                 <img alt="Vue logo" src="./assets/logo.png" class="w-25 float-left">
             </div>
-            <h1 class="small">Router Links - Continuous deployment test</h1>
+            <h1 class="small">Router Links</h1>
             <router-link to="/">Home</router-link>
             <router-link to="/api">API</router-link>
             <router-link to="/about/Rene">About</router-link>
