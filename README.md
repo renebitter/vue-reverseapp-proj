@@ -3,6 +3,8 @@
 My first Vue project.
 Used: Components, Routes, Reusable functions, API
 
+Currently online at:
+https://vue-reverse-app.netlify.com/
 
 ## Project setup
 ```
