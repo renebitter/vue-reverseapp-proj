@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "vee-validate": "^2.2.13",
-    "vue": "^2.6.10",
+    "vue": "^2.6.12",
     "vue-router": "^3.0.7"
   },
   "devDependencies": {
@@ -20,7 +20,7 @@
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,
